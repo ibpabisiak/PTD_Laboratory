@@ -20,34 +20,58 @@ public class CTask3 extends CBasicTask implements ITask
     private double Ts = 3;
     private double f = 22;
     private double N = fs * Ts;
-    private double l = 4 / Math.PI;
+    private double fi = (3 / 4) * Math.PI;
     
     public CTask3(float a_iK)
     {
         m_iK = a_iK;
     }
-    
+  
     @Override
-    public XYSeries execute() 
+    public XYSeries execute()
     {
         XYSeries oResult = new XYSeries("dla k = " + m_iK);
        
-        
         for(int i = 0; i < N; i++)
         {
-            double v = 0;
-            double t = i * Ts / fs;
+            float Y = 0.f;
+            float X = (float) (i  / fs);
             
-            for(int j = 1; j < m_iK; j++)
+            for(int k = 1; k <= 15 ; k++) 
             {
-                v += (1 / (2 * j - 1) * Math.sin((2 * j - 1) 
-                        * f * 2 * Math.PI * t));
+                Y += ((1 / (2 * k - 1) )
+                        * Math.sin((2 * k - 1) * f * 2 * Math.PI * X + fi));
             }
-            v += l;
+            Y = (float) (Y * (4 / Math.PI));
             
-            oResult.add(t, v);
+            oResult.add(X, Y);
         }
         
         return oResult;
     }
+    
+//    @Override
+//    public XYSeries execute() 
+//    {
+//        XYSeries oResult = new XYSeries("dla k = " + m_iK);
+//       
+//        
+//        for(int i = 0; i < N; i++)
+//        {
+//            double v = 0;
+//            double t = i * Ts / fs;
+//            
+//            for(int j = 1; j < m_iK; j++)
+//            {
+//                v += (1 / (2 * j - 1) * Math.sin((2 * j - 1) 
+//                        * f * 2 * Math.PI * t));
+//            }
+//            v += l;
+//            
+//            oResult.add(t, v);
+//        }
+//        
+//        return oResult;
+//    }
 }
+

@@ -5,7 +5,6 @@
  */
 package ptd.lab4;
 
-import java.util.ArrayList;
 import org.jfree.data.xy.XYSeries;
 import ptd.core.CBasicTask;
 import ptd.core.ITask;
@@ -35,16 +34,12 @@ public class CTask1 extends CBasicTask implements ITask
         double Kam = 0.1;
         double Kpm = 1.1;
         
-        //AM
-        float firstValue = (float) (2 * Math.PI * fc);
-        float secondValue = (float) (fs);
-        
         for(int t = 0; t < N; t++)
         {
             double X = t;
-            double cT1 = (float) (A *  Math.sin( (firstValue * t / secondValue) + fi));
+            double cT1 = (double) (A *  Math.sin( ((double) (2 * Math.PI * fc) * t / fs) + fi));
             
-            double Y = (1 + Kam * cT1) * Math.sin((2 * Math.PI * fm * t) / secondValue);
+            double Y = (1 + Kam * cT1) * Math.sin((2 * Math.PI * fm * t) / fs);
             oResult.add(X, Y);
         }
         

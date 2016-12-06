@@ -15,12 +15,12 @@ public class CAppStart
     public static void main(String[] args) throws Exception
     {
         XYSeriesCollection oDataset = new XYSeriesCollection();
-        ILabFactory oLaboratory = CLabFactory.getLab(4);
+        ILabFactory oLaboratory = CLabFactory.getLab(2);
 
         if(null != oLaboratory)
         {
-            oDataset.addSeries(oLaboratory.getTask1()
-                    .execute());            
+//            oDataset.addSeries(oLaboratory.getTask1()
+//                    .execute());            
 //            oDataset.addSeries(oLaboratory.getTask2(18, 15)
 //                    .execute());
 //            oDataset.addSeries(oLaboratory.getTask2(12, 17)
@@ -31,8 +31,8 @@ public class CAppStart
 //                    .execute());
 //            oDataset.addSeries(oLaboratory.getTask3(10)
 //                    .execute());
-//            oDataset.addSeries(oLaboratory.getTask3(15)
-//                    .execute());
+            oDataset.addSeries(oLaboratory.getTask3(15)
+                    .execute());
         }
 
         LINE_CHART.plot(oDataset, "Lab3");

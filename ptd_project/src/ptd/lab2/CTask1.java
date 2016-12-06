@@ -28,13 +28,10 @@ public class CTask1 extends CBasicTask implements ITask
     {
         XYSeries oResult = new XYSeries("zad1");
 
-        float firstValue = (float) (2 * Math.PI * f);
-        float secondValue = fs + fi;
-        
         for(int t = 0; t < N; t++)
         {
             Float X = t / fs;
-            Float Y = (float) (A *  Math.sin( (firstValue * t / secondValue) ));
+            Float Y = (float) (A *  Math.sin( ((float) (2 * Math.PI * f) * t / fs + fi) ));
             oResult.add(X, Y);
         }
     
