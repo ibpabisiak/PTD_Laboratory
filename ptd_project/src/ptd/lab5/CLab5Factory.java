@@ -23,7 +23,7 @@ public class CLab5Factory implements ILabFactory
 
     @Override
     public ITask getTask2(float a_fF1, float a_fF2) {
-        return null;
+        return new CTask2();
     }
 
     @Override

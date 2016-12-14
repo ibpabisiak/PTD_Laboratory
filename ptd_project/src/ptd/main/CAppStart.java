@@ -35,6 +35,6 @@ public class CAppStart
 //                    .execute());
         }
 
-        LINE_CHART.plot(oDataset, "Lab3");
+        LINE_CHART.plot(oDataset, "Lab5");
     }
 }

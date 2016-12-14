@@ -27,54 +27,10 @@ public class CTask3 extends CBasicTask implements ITask
     {
         k = a_fK;
     }    
-    
+
     @Override
     public XYSeries execute() 
     {
-        XYSeries oResult = new XYSeries("dla k = " + k + " | ");
-       
-        ArrayList<Float> temp = new ArrayList<Float>();
-        for(int i = 0; i < N; i++)
-        {
-            double v = 0;
-            double t = i * Ts / fs;
-            
-            for(int j = 1; j < k; j++)
-            {
-                v += (1 / (2 * j - 1) * Math.sin((2 * j - 1) 
-                        * f * 2 * Math.PI * t));
-            }
-            v += l;
-            temp.add((float)v);
-            
-
-        }
-
-        ArrayList<Float> Y = new ArrayList<Float>();
-        ArrayList<Float> X = new ArrayList<Float>();
-        
-        for(int kk = 0; kk < N/2; kk++)
-        {
-            float Ex = 0, Ey = 0;
-            for(int n = 0; n < N; n++)
-            {
-                float val = (float) ((2 * Math.PI * n * kk) / N);
-                
-                float ex = (float) (Math.sin(val));
-                float ey = (float) (Math.cos((val)));
-                
-                Ex += temp.get(n) * ex;
-                Ey += temp.get(n) * ey;
-            }
-
-            Y.add((float)Math.sqrt(Ex*Ex + Ey*Ey));           
-
-            float asd = (float) (kk * (fs / N));
-            X.add(asd);
-            
-            oResult.add(asd, (float)Math.sqrt(Ex*Ex + Ey*Ey));
-        }
-        
-        return oResult;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
