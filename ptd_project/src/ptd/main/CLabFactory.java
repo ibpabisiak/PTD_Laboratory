@@ -10,6 +10,7 @@ import ptd.lab2.CLab2Factory;
 import ptd.lab3.CLab3Factory;
 import ptd.lab4.CLab4Factory;
 import ptd.lab5.CLab5Factory;
+import ptd.lab6.CLab6Factory;
 
 /**
  *
@@ -34,6 +35,9 @@ public class CLabFactory
                 break;                   
             case 5:
                 oResult = new CLab5Factory();
+                break;                   
+            case 6:
+                oResult = new CLab6Factory();
                 break;                
             default:
                 oResult = null;

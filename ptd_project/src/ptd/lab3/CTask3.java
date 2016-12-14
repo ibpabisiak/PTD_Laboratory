@@ -44,7 +44,7 @@ public class CTask3 extends CBasicTask implements ITask
                 v += (1 / (2 * j - 1) * Math.sin((2 * j - 1) 
                         * f * 2 * Math.PI * t));
             }
-            v += l;
+            v = (4 / Math.PI) * v;
             temp.add((float)v);
             
 

@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/!REPOSITORIES/PTD_Laboratory/ptd_project/src/ptd/lab5/CLab5Factory.java</file>
+            <file>file:/C:/!REPOSITORIES/PTD_Laboratory/ptd_project/src/ptd/core/ITask.java</file>
+            <file>file:/C:/!REPOSITORIES/PTD_Laboratory/ptd_project/src/ptd/core/CBasicTask.java</file>
+            <file>file:/C:/!REPOSITORIES/PTD_Laboratory/ptd_project/src/ptd/lab2/CTask2.java</file>
+            <file>file:/C:/!REPOSITORIES/PTD_Laboratory/ptd_project/src/ptd/main/CAppStart.java</file>
+            <file>file:/C:/!REPOSITORIES/PTD_Laboratory/ptd_project/src/ptd/core/ILabFactory.java</file>
+            <file>file:/C:/!REPOSITORIES/PTD_Laboratory/ptd_project/src/ptd/lab5/CTask2.java</file>
+            <file>file:/C:/!REPOSITORIES/PTD_Laboratory/ptd_project/src/ptd/lab5/CTask1.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -16,18 +16,19 @@ public class CLab5Factory implements ILabFactory
 {
 
     @Override
-    public ITask getTask1() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ITask getTask1() 
+    {
+        return new CTask1();
     }
 
     @Override
     public ITask getTask2(float a_fF1, float a_fF2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new CTask2();
     }
 
     @Override
     public ITask getTask3(float a_fK) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
     
 }
