@@ -25,24 +25,35 @@ public class CTask1 extends CBasicTask implements ITask
     private double fc = 200;
     
     public CTask1() { }
-    
+  
     @Override
-    public XYSeries execute() 
+    public XYSeries execute()
     {
         XYSeries oResult = new XYSeries("dla j = 0.1");
-
-        double Kam = 0.1;
-        double Kpm = 1.1;
         
-        for(int t = 0; t < N; t++)
-        {
-            double X = t;
-            double cT1 = (double) (A *  Math.sin( ((double) (2 * Math.PI * fc) * t / fs) + fi));
-            
-            double Y = (1 + Kam * cT1) * Math.sin((2 * Math.PI * fm * t) / fs);
-            oResult.add(X, Y);
-        }
+        float Kam = 0.1f;
+        float Kpm = 0.1f;
         
         return oResult;
     }
+    
+//    @Override
+//    public XYSeries execute() 
+//    {
+//        XYSeries oResult = new XYSeries("dla j = 0.1");
+//
+//        double Kam = 0.1;
+//        double Kpm = 1.1;
+//        
+//        for(int t = 0; t < N; t++)
+//        {
+//            double X = t;
+//            double cT1 = (double) (A *  Math.sin( ((double) (2 * Math.PI * fc) * t / fs) + fi));
+//            
+//            double Y = (1 + Kam * cT1) * Math.sin((2 * Math.PI * fm * t) / fs);
+//            oResult.add(X, Y);
+//        }
+//        
+//        return oResult;
+//    }
 }

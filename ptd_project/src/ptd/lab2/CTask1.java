@@ -8,6 +8,7 @@ package ptd.lab2;
 import java.util.ArrayList;
 import org.jfree.data.xy.XYSeries;
 import ptd.core.CBasicTask;
+import ptd.core.CPoint;
 import ptd.core.ITask;
 
 /**
@@ -16,25 +17,25 @@ import ptd.core.ITask;
  */
 public class CTask1 extends CBasicTask implements ITask 
 {
-    float fi = (float) ((3/4) * Math.PI);
-    float Ts = 1;
-    float A = (float) 0.4;
-    float f = 22; //hz
-    float fs = 1500; //hz
-    float N = fs * Ts; //buffer size
+    private final float fi = (float) ((3/4) * Math.PI);
+    private final float Ts = 1;
+    private final float A = (float) 0.4;
+    private final float f = 22; //hz
+    private final float fs = 1500; //hz
+//    private final float N = fs * Ts; //buffer size
     
     @Override
     public XYSeries execute() 
     {
         XYSeries oResult = new XYSeries("zad1");
 
-        for(int t = 0; t < N; t++)
+        ArrayList<CPoint> oSimpleSinusSignalPoints = getSimpleSinusSignal(fi, Ts, A, f, fs);
+
+        for(CPoint oPoint : oSimpleSinusSignalPoints)
         {
-            Float X = t / fs;
-            Float Y = (float) (A *  Math.sin( ((float) (2 * Math.PI * f) * t / fs + fi) ));
-            oResult.add(X, Y);
+            oResult.add(oPoint.getPosX(), oPoint.getPosY());
         }
-    
+        
         return oResult;
     }
 }

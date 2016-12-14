@@ -13,13 +13,27 @@ import java.util.ArrayList;
  */
 public abstract class CBasicTask 
 {
-    public ArrayList<Float> fourierTransform(ArrayList<Float> a_oX, 
-            ArrayList<Float> a_oY)
+    public ArrayList<CPoint> fourierTransform(ArrayList<CPoint> a_oPoints)
     {
-        ArrayList<Float> oResult = null;
+        ArrayList<CPoint> oResult = null;
         
         //TODO implement fourier transform here
         
+        return oResult;
+    }
+    
+    public ArrayList<CPoint> getSimpleSinusSignal(float fi, float Ts, 
+            float A, float f, float fs)
+    {
+        ArrayList<CPoint> oResult = new ArrayList<CPoint>();
+
+        for(int t = 0; t < (fs * Ts); t++)
+        {
+            Float fPosX = t / fs;
+            Float fPosY = (float) (A *  Math.sin( ((float) (2 * Math.PI * f) * t / fs + fi) ));
+            oResult.add(new CPoint(fPosX, fPosY));
+        }
+
         return oResult;
     }
 }
