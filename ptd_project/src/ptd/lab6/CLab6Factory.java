@@ -10,14 +10,15 @@ import ptd.core.ITask;
 
 /**
  *
- * @author ibpabisiak
+ * @author Bartlomiej Pabisiak <bpabisiak@wi.zut.edu.pl>
  */
 public class CLab6Factory implements ILabFactory
 {
 
     @Override
-    public ITask getTask1() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ITask getTask1() 
+    {
+        return new CTask1();
     }
 
     @Override

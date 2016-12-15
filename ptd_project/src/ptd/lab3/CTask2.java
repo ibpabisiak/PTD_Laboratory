@@ -67,13 +67,38 @@ public class CTask2 extends CBasicTask implements ITask
                 Ey += temp.get(n) * ey;
             }
 
-            Y.add((float)Math.sqrt(Ex*Ex + Ey*Ey));           
+//            Y.add((float)Math.sqrt(Ex*Ex + Ey*Ey));           
 
-            float asd = (float) (k * (fs / N));
+            Float y2 = 10 * (float)Math.log10(Ex*Ex + Ey*Ey);
+            Y.add(y2*y2);
+            
+            //max z Y teraz, przechowuje ja sobie - dla wszystkich elementow Y odejmujesz najwyzsza wartosc, widmo mocy
+
+            
+            
+            float asd = (float) (k * (fs / 2));
             X.add(asd);
             
-            oResult.add(asd, (float)Math.sqrt(Ex*Ex + Ey*Ey));
+//            oResult.add(asd, (float)Math.sqrt(Ex*Ex + Ey*Ey));
         }
+        
+        Float maxY = getMaxValueFromList(Y);
+        
+        ArrayList<Float> newY = new ArrayList<Float>();
+        
+        for(int i = 0; i < Y.size(); i++)
+        {
+//            newY.add(Y.get(i) - maxY);
+            Float asdasd = Y.get(i) - maxY;
+            if(Y.get(i) >= -3)
+                oResult.add((float)X.get(i), (float)asdasd);
+        }
+        
+        for(int i = 0; i < newY.size(); i++)
+        {
+            //poskladaj to TODO
+        }
+        
         return oResult;     
     }
 }

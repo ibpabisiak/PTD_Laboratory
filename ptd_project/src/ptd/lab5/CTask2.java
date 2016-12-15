@@ -38,7 +38,7 @@ public class CTask2 extends CBasicTask implements ITask{
         for(int t = 0; t < N; t++)
         {
             Float X = t / fs;
-            Float Y = (-1)*(float) (5 *  Math.sin( ((float) (2 * Math.PI * f ) * t / fs + fi) ));
+            Float Y = (-1)*(float) (10 *  Math.sin( ((float) (2 * Math.PI * f ) * t / fs + fi) ));
 
             lowSignal.add(new CPoint(X, Y));
         }    

@@ -61,4 +61,17 @@ public abstract class CBasicTask
         return oResult;
     }    
     
+    protected Float getMaxValueFromList(ArrayList<Float> a_oList)
+    {
+        Float fMaxValue = -999f;
+        for(Float value : a_oList)
+        {
+            if(value > fMaxValue)
+            {
+                fMaxValue = value;
+            }
+        }
+        return fMaxValue;
+    }
+    
 }

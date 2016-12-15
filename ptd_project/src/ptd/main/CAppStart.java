@@ -15,7 +15,7 @@ public class CAppStart
     public static void main(String[] args) throws Exception
     {
         XYSeriesCollection oDataset = new XYSeriesCollection();
-        ILabFactory oLaboratory = CLabFactory.getLab(5);
+        ILabFactory oLaboratory = CLabFactory.getLab(6);
 
         if(null != oLaboratory)
         {
@@ -35,6 +35,6 @@ public class CAppStart
 //                    .execute());
         }
 
-        LINE_CHART.plot(oDataset, "Lab5");
+        LINE_CHART.plot(oDataset, "Lab6");
     }
 }
