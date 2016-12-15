@@ -15,7 +15,7 @@ public class CAppStart
     public static void main(String[] args) throws Exception
     {
         XYSeriesCollection oDataset = new XYSeriesCollection();
-        ILabFactory oLaboratory = CLabFactory.getLab(6);
+        ILabFactory oLaboratory = CLabFactory.getLab(4);
 
         if(null != oLaboratory)
         {

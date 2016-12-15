@@ -8,7 +8,7 @@ package ptd.lab2;
 import java.util.ArrayList;
 import org.jfree.data.xy.XYSeries;
 import ptd.core.CBasicTask;
-import ptd.core.CPoint;
+import ptd.core.CFloatPoint;
 import ptd.core.ITask;
 
 /**
@@ -29,9 +29,9 @@ public class CTask1 extends CBasicTask implements ITask
     {
         XYSeries oResult = new XYSeries("zad1");
 
-        ArrayList<CPoint> oSimpleSinusSignalPoints = getSimpleSinusSignal(fi, Ts, A, f, fs);
+        ArrayList<CFloatPoint> oSimpleSinusSignalPoints = getSimpleSinusSignal(fi, Ts, A, f, fs);
 
-        for(CPoint oPoint : oSimpleSinusSignalPoints)
+        for(CFloatPoint oPoint : oSimpleSinusSignalPoints)
         {
             oResult.add(oPoint.getPosX(), oPoint.getPosY());
         }

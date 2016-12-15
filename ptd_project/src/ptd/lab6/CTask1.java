@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import org.jfree.data.xy.XYSeries;
 import ptd.core.CBasicTask;
-import ptd.core.CPoint;
+import ptd.core.CFloatPoint;
 import ptd.core.ITask;
 
 /**
@@ -40,7 +40,7 @@ public class CTask1 extends CBasicTask implements ITask
         XYSeries oResult = new XYSeries("FSK - message: \"" +a_strMessage+"\", binary: \"" + strBinaryMessage + "\"");
 
 //        strBinaryMessage = "01010101010101010101";
-        ArrayList<CPoint> hightSignal = new ArrayList<CPoint>();
+        ArrayList<CFloatPoint> hightSignal = new ArrayList<CFloatPoint>();
         Float temp = 0f;
         for(int t = 0; t < N; t++)
         {
@@ -49,12 +49,12 @@ public class CTask1 extends CBasicTask implements ITask
             
             Y = (Y < 0f) ? (-1)*Y : Y;
             
-            hightSignal.add(new CPoint(X, Y));
+            hightSignal.add(new CFloatPoint(X, Y));
             temp += Y;
         }   
 //        System.out.println("highSignal sum: " + temp);
 
-        ArrayList<CPoint> lowSignal = new ArrayList<CPoint>();
+        ArrayList<CFloatPoint> lowSignal = new ArrayList<CFloatPoint>();
         Float temp2 = 0f;
         for(int t = 0; t < N; t++)
         {
@@ -62,7 +62,7 @@ public class CTask1 extends CBasicTask implements ITask
             Float Y = (float) (1 *  Math.sin( ((float) (2 * Math.PI * 2 ) * t / fs + fi) ));
 
             Y = (Y < 0f) ? (-1)*Y : Y;
-            lowSignal.add(new CPoint(X, Y));
+            lowSignal.add(new CFloatPoint(X, Y));
             temp2 += Y;
         }           
 //        System.out.println("lowSignal sum: " + temp2);
@@ -127,22 +127,22 @@ public class CTask1 extends CBasicTask implements ITask
         
 //        strBinaryMessage = "101010101010";
         
-        ArrayList<CPoint> hightSignal = new ArrayList<CPoint>();
+        ArrayList<CFloatPoint> hightSignal = new ArrayList<CFloatPoint>();
         for(int t = 0; t < N; t++)
         {
             Float X = t / fs;
             Float Y = 1f;
             
-            hightSignal.add(new CPoint(X, Y));
+            hightSignal.add(new CFloatPoint(X, Y));
         }   
 
-        ArrayList<CPoint> lowSignal = new ArrayList<CPoint>();
+        ArrayList<CFloatPoint> lowSignal = new ArrayList<CFloatPoint>();
         for(int t = 0; t < N; t++)
         {
             Float X = t / fs;
             Float Y = 0f;
 
-            lowSignal.add(new CPoint(X, Y));
+            lowSignal.add(new CFloatPoint(X, Y));
         }           
         
         for(int i = 0; i < strBinaryMessage.length(); i++)
@@ -151,7 +151,7 @@ public class CTask1 extends CBasicTask implements ITask
             {
                 Float lastX = hightSignal.get(hightSignal.size() - 1).getPosX();
                 
-                for(CPoint point : hightSignal)
+                for(CFloatPoint point : hightSignal)
                 {
                     oResult.add(point.getPosX() + (i * lastX), point.getPosY());
                 }
@@ -161,7 +161,7 @@ public class CTask1 extends CBasicTask implements ITask
             {
                 Float lastX = lowSignal.get(hightSignal.size() - 1).getPosX();
                 
-                for(CPoint point : lowSignal)
+                for(CFloatPoint point : lowSignal)
                 {
                     oResult.add(point.getPosX() + (i * lastX), point.getPosY());
                 }                
@@ -177,25 +177,25 @@ public class CTask1 extends CBasicTask implements ITask
         XYSeries oResult = new XYSeries("ASK - message: \"" +a_strMessage+"\", binary: \"" + strBinaryMessage + "\"");
 
 //        strBinaryMessage = "10101010";
-        ArrayList<CPoint> hightSignal = new ArrayList<CPoint>();
+        ArrayList<CFloatPoint> hightSignal = new ArrayList<CFloatPoint>();
         for(int t = 0; t < N; t++)
         {
             Float X = t / fs;
             Float Y = (float) (2 *  Math.sin( ((float) (2 * Math.PI * f ) * t / fs + fi) )) ;
             
-            hightSignal.add(new CPoint(X, Y));
+            hightSignal.add(new CFloatPoint(X, Y));
         }   
 
-        ArrayList<CPoint> lowSignal = new ArrayList<CPoint>();
+        ArrayList<CFloatPoint> lowSignal = new ArrayList<CFloatPoint>();
         for(int t = 0; t < N; t++)
         {
             Float X = t / fs;
             Float Y = (float) (1 *  Math.sin( ((float) (2 * Math.PI * f ) * t / fs + fi) )) ;
 
-            lowSignal.add(new CPoint(X, Y));
+            lowSignal.add(new CFloatPoint(X, Y));
         }           
         
-        ArrayList<CPoint> oAskSignal = new ArrayList<CPoint>();
+        ArrayList<CFloatPoint> oAskSignal = new ArrayList<CFloatPoint>();
         
 
         
@@ -223,7 +223,7 @@ public class CTask1 extends CBasicTask implements ITask
 //                    Y = hightSignal.get(i).getPosY();
 //                    oAskSignal.add(new CPoint(lowSignal.get(j).getPosX() + (i * lastX), 
 //                            /*(float)((Y > prog) ? 1f : 0f))*/(float)Y));
-                    oAskSignal.add(new CPoint(hightSignal.get(j).getPosX() + (i * lastX), Y));
+                    oAskSignal.add(new CFloatPoint(hightSignal.get(j).getPosX() + (i * lastX), Y));
                 }
             }
             else if(strBinaryMessage.charAt(i) == '0')
@@ -249,12 +249,12 @@ public class CTask1 extends CBasicTask implements ITask
 //                            /*(float)((Y > prog) ? 1f : 0f))*/(float)Y));
 
 
-                    oAskSignal.add(new CPoint(lowSignal.get(j).getPosX() + (i * lastX), Y));
+                    oAskSignal.add(new CFloatPoint(lowSignal.get(j).getPosX() + (i * lastX), Y));
                 }
             }
         }
         
-        for(CPoint point : oAskSignal)
+        for(CFloatPoint point : oAskSignal)
         {
             oResult.add(point.getPosX(), point.getPosY());
         }
@@ -281,24 +281,24 @@ public class CTask1 extends CBasicTask implements ITask
         String strBinaryMessage = stringToBinaryCode(a_strMessage);
         XYSeries oResult = new XYSeries("PSK - message: \"" +a_strMessage+"\", binary: \"" + strBinaryMessage + "\"");
 
-        ArrayList<CPoint> lowSignal = new ArrayList<CPoint>();
+        ArrayList<CFloatPoint> lowSignal = new ArrayList<CFloatPoint>();
         for(int t = 0; t < N; t++)
         {
             Float X = t / fs;
             Float Y = (-1)*(float) (10 *  Math.sin( ((float) (2 * Math.PI * f ) * t / fs + fi) ));
 
             Y = (Y > 0.01) ? (-1)*Y : Y;
-            lowSignal.add(new CPoint(X, Y));
+            lowSignal.add(new CFloatPoint(X, Y));
         }    
 
-        ArrayList<CPoint> hightSignal = new ArrayList<CPoint>();
+        ArrayList<CFloatPoint> hightSignal = new ArrayList<CFloatPoint>();
         for(int t = 0; t < N; t++)
         {
             Float X = t / fs;
             Float Y = (float) (10 *  Math.sin( ((float) (2 * Math.PI * f ) * t / fs + fi) ));
 
             Y = (Y < 0.01) ? (-1)*Y : Y;
-            hightSignal.add(new CPoint(X, Y));
+            hightSignal.add(new CFloatPoint(X, Y));
         }    
 
         for(int i = 0; i < strBinaryMessage.length(); i++)

@@ -13,25 +13,25 @@ import java.util.ArrayList;
  */
 public abstract class CBasicTask 
 {
-    protected ArrayList<CPoint> fourierTransform(ArrayList<CPoint> a_oPoints)
+    protected ArrayList<CFloatPoint> fourierTransform(ArrayList<CFloatPoint> a_oPoints)
     {
-        ArrayList<CPoint> oResult = null;
+        ArrayList<CFloatPoint> oResult = null;
         
         //TODO implement fourier transform here
         
         return oResult;
     }
     
-    protected ArrayList<CPoint> getSimpleSinusSignal(float fi, float Ts, 
+    protected ArrayList<CFloatPoint> getSimpleSinusSignal(float fi, float Ts, 
             float A, float f, float fs)
     {
-        ArrayList<CPoint> oResult = new ArrayList<CPoint>();
+        ArrayList<CFloatPoint> oResult = new ArrayList<CFloatPoint>();
 
         for(int t = 0; t < (fs * Ts); t++)
         {
             Float fPosX = t / fs;
             Float fPosY = (float) (A *  Math.sin( ((float) (2 * Math.PI * f) * t / fs + fi) ));
-            oResult.add(new CPoint(fPosX, fPosY));
+            oResult.add(new CFloatPoint(fPosX, fPosY));
         }
 
         return oResult;
@@ -61,10 +61,23 @@ public abstract class CBasicTask
         return oResult;
     }    
     
-    protected Float getMaxValueFromList(ArrayList<Float> a_oList)
+    protected Float getMaxFloatFromList(ArrayList<Float> a_oList)
     {
         Float fMaxValue = -999f;
         for(Float value : a_oList)
+        {
+            if(value > fMaxValue)
+            {
+                fMaxValue = value;
+            }
+        }
+        return fMaxValue;
+    }
+    
+    protected Double getMaxDoubleFromList(ArrayList<Double> a_oList)
+    {
+        Double fMaxValue = -999.0;
+        for(Double value : a_oList)
         {
             if(value > fMaxValue)
             {

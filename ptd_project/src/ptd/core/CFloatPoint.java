@@ -9,18 +9,18 @@ package ptd.core;
  *
  * @author Bartlomiej Pabisiak <bpabisiak@wi.zut.edu.pl>
  */
-public class CPoint 
+public class CFloatPoint 
 {
     private Float m_fPosX;
     private Float m_fPosY;
 
-    public CPoint(Float a_fPosX, Float a_fPosY)
+    public CFloatPoint(Float a_fPosX, Float a_fPosY)
     {
         setPosX(a_fPosX);
         setPosY(a_fPosY);
     }
     
-    public CPoint()
+    public CFloatPoint()
     {
         setPosX(0f);
         setPosY(0f);

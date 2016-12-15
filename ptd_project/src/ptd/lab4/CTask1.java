@@ -8,6 +8,8 @@ package ptd.lab4;
 import java.util.ArrayList;
 import org.jfree.data.xy.XYSeries;
 import ptd.core.CBasicTask;
+import ptd.core.CDoublePoint;
+import ptd.core.CFloatPoint;
 import ptd.core.ITask;
 
 /**
@@ -34,51 +36,29 @@ public class CTask1 extends CBasicTask implements ITask
         float Kpm = 1.1f;
         XYSeries oResult = new XYSeries("Kpm = " + Kpm);
         
-
-        ArrayList<Double> oAmPosX = new ArrayList<>();
-        ArrayList<Double> oAmPosY = new ArrayList<>();
-        ArrayList<Double> oPmPosX = new ArrayList<>();
-        ArrayList<Double> oPmPosY = new ArrayList<>();
-
+        ArrayList<CDoublePoint> oAmSignal = new ArrayList<CDoublePoint>();
+        ArrayList<CDoublePoint> oPmSignal = new ArrayList<CDoublePoint>();
+        
         for(int t = 0; t < N; t++)
         {
             //AM
             double X = t;
             double Ct = getSinusSignalSample(fi, Ts, A, f, fs, (double)t);
             double Y = (1 + Kam * Ct) * Math.sin((2 * Math.PI * fm * t) / fs);
-            oAmPosX.add(X);
-            oAmPosY.add(Y);
+            oAmSignal.add(new CDoublePoint(X, Y));
             
             //PM
             X = t;
             Ct = getSinusSignalSample(fi, Ts, A, f, fs, (double)t);
             Y = (1 + Kam * Ct) * (Math.sin(2 * Math.PI * fm*t + Kpm*Ct));
-            oPmPosX.add(X);
-            oPmPosY.add(Y);
-            oResult.add(X, Y);
+            oPmSignal.add(new CDoublePoint(X, Y));
         }
 
-        for(int i = 0; i < N; i++)
+        for(int i = 0; i < oAmSignal.size(); i++)
         {
-            //......
-            double X = oAmPosX.get(i) - getMaxFromList(oAmPosX);
+            oResult.add(oAmSignal.get(i).getPosX(), oAmSignal.get(i).getPosY());
         }
         
-        
-        return oResult;
-    }
-    
-    private double getMaxFromList(ArrayList<Double> a_oList)
-    {
-        double oResult = -9999;
-
-        for(Double oNum : a_oList)
-        {
-            if(oNum > oResult)
-            {
-                oResult = oNum;
-            }
-        }        
         return oResult;
     }
     
